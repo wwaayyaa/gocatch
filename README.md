@@ -12,6 +12,13 @@ dep ensure -add github.com/wwaayyaa/gocatch
 dep ensure -v
 ```
 
+### Methods
+#### Catch
+if your goroutine crash, will pass ```error``` to you callback with ```interface{}``` type.
+#### CatchWithStack
+if your goroutine crash, will print stack and pass ```error``` to you callback with ```interface{}``` type.
+
+
 ### example
 
 ```go
@@ -24,6 +31,7 @@ func foo() {
 	fmt.Printf("doing...\r\n")
 	panic("i am panic!")
 }
+
 func main() {
 	go foo()
 	time.Sleep(1 * time.Second)
