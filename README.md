@@ -15,20 +15,40 @@ dep ensure -v
 ### Methods
 #### Catch
 if your goroutine crash, will pass ```error``` to you callback with ```interface{}``` type.
+
+```go
+defer gocatch.Catch(func(e interface{}){
+	///
+}
+```
 #### CatchWithStack
-if your goroutine crash, will print stack and pass ```error``` to you callback with ```interface{}``` type.
+if your goroutine crash, will print stack and pass ```error``` to you callback with ```interface
+}{}``` type.
 
+```go
+defer gocatch.Catch(func(e interface{}){
+	///
+}
+```
+#### CatchStack
+if your goroutine crash, will pass ```error``` and stack-string to you callback.
 
+```go
+defer gocatch.Catch(func(e interface{}, stack string){
+	///
+}
+```
 ### example
 
 ```go
 func foo() {
-	defer gocatch.Catch(func(e interface{}){
+	defer gocatch.Catch(func(e
+	interface{}){
 		fmt.Printf("catch %+v", e)
 		// maybe custom func throw panic
 		panic("panic again.")
 		})
-	fmt.Printf("doing...\r\n")
+	fmt.Printf("d	oing...\r\n")
 	panic("i am panic!")
 }
 

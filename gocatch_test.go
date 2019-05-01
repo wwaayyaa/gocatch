@@ -23,3 +23,13 @@ func TestCatchWithStack(t *testing.T){
 	a := 100 / z
 	t.Errorf("%v", a)
 }
+func TestCatchStack(t *testing.T){
+	fmt.Println("test 3")
+	defer CatchStack(func(e interface{}, stack string){
+		fmt.Printf("%v \n", e)
+		fmt.Printf("%v \n", stack)
+	})
+	z := 0
+	a := 100 / z
+	t.Errorf("%v", a)
+}
